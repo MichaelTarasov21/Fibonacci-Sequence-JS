@@ -138,14 +138,16 @@ function run() {
 function calculate(term) {
   var sequence = [0, 1];
 
-  while (term > sequence.length) {
-    var nextterm = sequence[sequence.length - 1] + sequence[sequence.length - 2];
-    console.log(nextterm);
-    sequence.push(nextterm);
-    console.log(sequence);
+  if (term === 1) {
+    sequence = [0];
   }
 
-  document.getElementById("answer").innerHTML = "Term ".concat(term, " in the Fibonacci Sequence is ").concat(sequence[term - 1]);
+  while (term > sequence.length) {
+    var nextterm = sequence[sequence.length - 1] + sequence[sequence.length - 2];
+    sequence.push(nextterm);
+  }
+
+  document.getElementById("answer").innerHTML = "The first ".concat(term, " terms in the Fibonacci Sequence are ").concat(sequence);
 }
 
 document.getElementById("submit").addEventListener("click", run);
@@ -177,7 +179,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39241" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33343" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
